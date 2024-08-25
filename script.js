@@ -50,12 +50,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function askPassword() {
     var a = 10 + 35 + 38 + 69 + 100; // this could also be found on my website if you tried.. maybe you'll find where it's hidden with this hint.
-    var w8w = prompt("Enter the code: XXX ");
+    var w8w = prompt("Enter code: XXX ");
 
 
     if (w8w === a.toString()) {
         window.location.href = "https://github.com/Ublec01d/website"; // target URL
     } else {
-        alert("INCORRECT CODE! Think...");
+        alert("INCORRECT CODE! who are you? O.o");
     }
 }
