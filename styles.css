@@ -18,6 +18,8 @@ html, body {
     flex-direction: column;
     align-items: center;  /* Center content horizontally */
     text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #construction-banner {
@@ -98,6 +100,11 @@ footer {
     height: 100vh;
     object-fit: cover;
     z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Lengthy Bottom Spacer */
+.bottom-space {
+    margin-bottom: 10000px; /* Adjust the value as needed */
 }
 
 /* Media Queries for Mobile Responsiveness */
