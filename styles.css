@@ -73,3 +73,6 @@ footer {
     height: auto;
 }
 
+.bottom-space {
+    margin-bottom: 10000px; /* Adjust the value as needed */
+}
