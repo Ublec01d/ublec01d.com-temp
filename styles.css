@@ -119,7 +119,7 @@ footer {
     }
 
     #gif-container img {
-        max-width: 500px; /* Smaller maximum width for mobile */
+        max-width: 200px; /* Smaller maximum width for mobile */
     }
 }
 
@@ -144,6 +144,6 @@ footer {
     }
 
     #gif-container img {
-        max-width: 300px; /* Even smaller maximum width for very small screens */
+        max-width: 100px; /* Even smaller maximum width for very small screens */
     }
 }
