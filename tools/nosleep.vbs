@@ -1,6 +1,6 @@
-`nosleep by ublec01d
+'nosleep.vbs by ublec01d
 'this script prevents the pc from sleeping.
-'double taps Numlock every 5 minutes.
+'quickly double taps Numlock every 5 minutes.
 
 Dim objResult
 
