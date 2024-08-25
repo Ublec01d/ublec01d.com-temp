@@ -98,7 +98,7 @@ footer {
 /* Media Queries for Mobile Responsiveness */
 @media (max-width: 768px) {
     #main-title {
-        font-size: 2em; /* Smaller font size for mobile */
+        font-size: 1.4em; /* Smaller font size for mobile */
     }
 
     #navbar {
@@ -107,7 +107,7 @@ footer {
 
     #navbar a {
         padding: 3px 5px;
-        font-size: 0.9em;
+        font-size: 0.4em;
     }
 
     #content {
@@ -119,13 +119,13 @@ footer {
     }
 
     #gif-container img {
-        max-width: 80px; /* Smaller maximum width for mobile */
+        max-width: 500px; /* Smaller maximum width for mobile */
     }
 }
 
 @media (max-width: 480px) {
     #main-title {
-        font-size: 1.5em; /* Even smaller font size for very small screens */
+        font-size: 1em; /* Even smaller font size for very small screens */
     }
 
     #navbar {
@@ -144,6 +144,6 @@ footer {
     }
 
     #gif-container img {
-        max-width: 60px; /* Even smaller maximum width for very small screens */
+        max-width: 300px; /* Even smaller maximum width for very small screens */
     }
 }
