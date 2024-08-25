@@ -53,7 +53,7 @@ function askPassword() {
 
 
     if (w8w === a.toString()) {
-        window.location.href = "https://github.com/Ublec01d"; // target URL
+        window.location.href = "https://github.com/Ublec01d/website"; // target URL
     } else {
         alert("Incorrect password. Try harder.");
     }
