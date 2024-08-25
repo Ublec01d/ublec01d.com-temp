@@ -95,6 +95,8 @@ footer {
     z-index: 1000; /* Ensure it's above other content */
 }
 
+/*
+
 /* Media Queries for Mobile Responsiveness */
 @media (max-width: 768px) {
     #main-title {
@@ -147,3 +149,5 @@ footer {
         max-width: 200px; /* Even smaller maximum width for very small screens */
     }
 }
+
+*/
