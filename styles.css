@@ -9,7 +9,7 @@ html, body {
     color: lime;
     font-family: "Courier New", Courier, monospace;
     text-align: center;
-    zoom: 125%;  /* Set zoom level to 125% */
+    zoom: 100%;  /* Set zoom level to 100% */
 }
 
 .wrapper {
