@@ -156,6 +156,6 @@ footer {
     }
 
     #gif-container img {
-        max-width: 300px; /* Even smaller maximum width for very small screens */
+        max-width: 500px; /* Even smaller maximum width for very small screens */
     }
 }
