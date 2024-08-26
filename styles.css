@@ -12,6 +12,18 @@ html, body {
     zoom: 100%;  /* Set zoom level to 100% */
 }
 
+ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0 auto; /* Center the list container */
+    text-align: center; /* Center text within list items */
+}
+
+ul li {
+    margin-bottom: 10px; /* Optional: Adds space between each list item */
+}
+
+
 .wrapper {
     flex: 1;
     display: flex;
@@ -79,7 +91,7 @@ footer {
 
 #gif-container img {
     display: inline-block;
-    max-width: 800px; /* Set maximum width to ensure it fits on smaller screens */
+    max-width: 1000px; /* Set maximum width to ensure it fits on smaller screens */
     height: auto;
     margin: 0 5px; /* Add margin for spacing between GIFs */
 }
@@ -89,8 +101,8 @@ footer {
     position: fixed;
     top: 100px;
     left: 20px;
-    width: 100vw;
-    height: 100vh;
+    width: 1000vw;
+    height: 1000vh;
     object-fit: cover;
     z-index: 1000; /* Ensure it's above other content */
 }
