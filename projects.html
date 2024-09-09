@@ -7,7 +7,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-4JS2HG2L14');
     </script>
     
@@ -48,34 +47,19 @@
             <br>
             <br>
             
-            <!-- Section for Scripts -->
-            <p id="scripts"><img src="images/coin.gif" alt="Skull"> <strong>scripts</strong> <img src="images/coin.gif" alt="Skull"></p>
-            <ul>
-                <li>list of scripts</li>
-            </ul>
-            <br>
-            <br>
-
-            <!-- Section for Hackpi -->
-            <p id="hackpi"><img src="images/coin.gif" alt="Skull"> <strong>hackpi</strong> <img src="images/coin.gif" alt="Skull"></p>
-            <ul>
-                <li>hackpi project</li>
-            </ul>
-            <br>
-            <br>
-
-            <!-- Section for HackRF -->
-            <p id="hackrf"><img src="images/coin.gif" alt="Skull"> <strong>hackrf</strong> <img src="images/coin.gif" alt="Skull"></p>
-            <ul>
-                <li>hackrf one</li>
-            </ul>
-            <br>
-            <br>
-
             <!-- Section for Infodump -->
             <p id="infodump"><img src="images/coin.gif" alt="Skull"> <strong>infodump</strong> <img src="images/coin.gif" alt="Skull"></p>
             <ul>
                 <li>just a bunch of useful information for all kinds of things</li>
+                <li><strong>Add to the Infodump:</strong></li>
+                <li>
+                    <input type="text" id="inputBox" placeholder="Type something here..." style="width: 80%;">
+                    <button id="addButton">Add Text</button>
+                </li>
+                <li><strong>Stored Infodump:</strong></li>
+                <li>
+                    <div id="displayText"></div>
+                </li>
             </ul>
             <br>
             <br>
@@ -88,7 +72,74 @@
             <img src="images/secure02.gif" alt="Security">
         </a> U2VjcmV0cyBhbGwgb3ZlciB0aGUgcGxhY2Uh </marquee>
     </footer>
-    <script src="script.js"></script>
-    
+
+    <!-- Firebase CDN Scripts (Version 8.x) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <!-- Your Firebase initialization and script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyBgu0JwZdclSeM9W-7cGjcs7dfxUu23930",
+                authDomain: "ublec01d-b32bb.firebaseapp.com",
+                databaseURL: "https://ublec01d-b32bb-default-rtdb.europe-west1.firebasedatabase.app",
+                projectId: "ublec01d-b32bb",
+                storageBucket: "ublec01d-b32bb.appspot.com",
+                messagingSenderId: "695529528296",
+                appId: "1:695529528296:web:3e34619f95fdac1fcf625d",
+                measurementId: "G-E1DCHYQ91Z"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const database = firebase.database();
+
+            // Add event listener for adding text
+            document.getElementById("addButton").addEventListener("click", function() {
+                addText();
+            });
+
+            // Function to add text to Firebase Realtime Database
+            function addText() {
+                const userInput = document.getElementById("inputBox").value;
+                if (!userInput.trim()) return; // Skip empty input
+
+                // Push to Firebase Database
+                database.ref('texts').push({
+                    text: userInput
+                }, function(error) {
+                    if (error) {
+                        console.error("Error adding text:", error);
+                    } else {
+                        document.getElementById("inputBox").value = ''; // Clear input field
+                        loadText(); // Refresh displayed texts
+                    }
+                });
+            }
+
+            // Function to load stored texts from Firebase Realtime Database
+            function loadText() {
+                const displayText = document.getElementById("displayText");
+                displayText.innerHTML = ''; // Clear current content
+
+                // Retrieve data from Firebase
+                database.ref('texts').once('value', function(snapshot) {
+                    snapshot.forEach(function(childSnapshot) {
+                        const childData = childSnapshot.val();
+                        const newText = document.createElement("p");
+                        newText.textContent = childData.text;
+                        displayText.appendChild(newText);
+                    });
+                }, function(error) {
+                    console.error("Error loading texts:", error);
+                });
+            }
+
+            // Load the texts when the page is loaded
+            loadText();
+        });
+    </script>
 </body>
 </html>
