@@ -18,6 +18,16 @@ document.addEventListener("DOMContentLoaded", function() {
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
+      // Initialize Firebase Authentication
+  firebase.auth().signInAnonymously()
+    .then(() => {
+      console.log("User signed in anonymously");
+    })
+    .catch((error) => {
+      console.error("Error signing in:", error);
+    });
+
+
     // Add event listener for adding text
     document.getElementById("addButton").addEventListener("click", function() {
         addText();
