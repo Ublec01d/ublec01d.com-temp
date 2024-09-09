@@ -4,19 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const hackSys = document.getElementById('hack-system');//remember to obfuscate later
     const firstGif = document.getElementById('first-gif');
     const secondGif = document.getElementById('second-gif');
-    const changeTextLink = document.getElementById('change-text-link');
-
-    // Toggle the text of the link when clicked
-    changeTextLink.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-        
-        // Toggle the text between 'links' and 'rechts'
-        if (this.textContent === 'links') {
-            this.textContent = 'rechts';
-        } else {
-            this.textContent = 'links';
-        }
-    });
 
     hackSys.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default link behavior
@@ -47,15 +34,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }, firstGifDuration);
     });
 });
-
-function askPassword() {
-    var a = 10 + 35 + 38 + 69 + 100; // this could also be found on my website if you tried.. maybe you'll find where it's hidden with this hint.
-    var w8w = prompt("Enter code: XXX ");
-
-
-    if (w8w === a.toString()) {
-        window.location.href = "https://github.com/Ublec01d/website"; // target URL
-    } else {
-        alert("INCORRECT CODE! ...who are you?.. ಠ_ಠ ");
-    }
-}
