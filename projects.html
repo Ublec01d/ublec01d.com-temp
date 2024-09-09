@@ -40,23 +40,34 @@
             <p><img src="images/spinningskull.gif" alt="Skull"> <strong>Jump to:</strong> <img src="images/spinningskull.gif" alt="Skull"></p>
             <ul>
                 <li><a href="#scripts">scripts</a></li>
-                <li><a href="#hackpi">hackpi</a></li>
-                <li><a href="#hackrf">hackrf</a></li>
                 <li><a href="#infodump">infodump</a></li>
             </ul>
             <br>
-            <br>
+
+            <!-- Section for scripts -->
+            <p id="scripts"><img src="images/coin.gif" alt="Skull"> <strong>scripts</strong> <img src="images/coin.gif" alt="Skull"></p>
+            <ul>
+                <li><em>someday a list of scripts will appear at this very spot</em></li>
             
+            <br>
+            <br>
+
             <!-- Section for Infodump -->
             <p id="infodump"><img src="images/coin.gif" alt="Skull"> <strong>infodump</strong> <img src="images/coin.gif" alt="Skull"></p>
             <ul>
-                <li>just a bunch of useful information for all kinds of things</li>
+                <li>Just a bunch of information, open for anyone to add something, but I do moderate to some degree.</li>
+                <li>If you believe that any content posted here infringes upon your rights, please contact me to request removal.</li>
+                <br>
+                <br>
                 <li><strong>Add to the Infodump:</strong></li>
                 <li>
-                    <input type="text" id="inputBox" placeholder="Type something here..." style="width: 80%;">
-                    <button id="addButton">Add Text</button>
+                    <input type="text" id="inputBox" placeholder="Input whatever..." style="width: 40%;">
+                    <button id="addButton">Add to dump</button>
                 </li>
-                <li><strong>Stored Infodump:</strong></li>
+                <br>
+                <br>
+                <br>
+                <li><img src="images/coin.gif" alt="Skull"> <strong>Stored Infodump:</strong> <img src="images/coin.gif" alt="Skull"></li>
                 <li>
                     <div id="displayText"></div>
                 </li>
@@ -77,69 +88,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
-    <!-- Your Firebase initialization and script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Firebase configuration
-            const firebaseConfig = {
-                apiKey: "AIzaSyBgu0JwZdclSeM9W-7cGjcs7dfxUu23930",
-                authDomain: "ublec01d-b32bb.firebaseapp.com",
-                databaseURL: "https://ublec01d-b32bb-default-rtdb.europe-west1.firebasedatabase.app",
-                projectId: "ublec01d-b32bb",
-                storageBucket: "ublec01d-b32bb.appspot.com",
-                messagingSenderId: "695529528296",
-                appId: "1:695529528296:web:3e34619f95fdac1fcf625d",
-                measurementId: "G-E1DCHYQ91Z"
-            };
+    <script src="firebaseapp.js"></script>
+    <script src="banner.js"></script>
 
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            const database = firebase.database();
-
-            // Add event listener for adding text
-            document.getElementById("addButton").addEventListener("click", function() {
-                addText();
-            });
-
-            // Function to add text to Firebase Realtime Database
-            function addText() {
-                const userInput = document.getElementById("inputBox").value;
-                if (!userInput.trim()) return; // Skip empty input
-
-                // Push to Firebase Database
-                database.ref('texts').push({
-                    text: userInput
-                }, function(error) {
-                    if (error) {
-                        console.error("Error adding text:", error);
-                    } else {
-                        document.getElementById("inputBox").value = ''; // Clear input field
-                        loadText(); // Refresh displayed texts
-                    }
-                });
-            }
-
-            // Function to load stored texts from Firebase Realtime Database
-            function loadText() {
-                const displayText = document.getElementById("displayText");
-                displayText.innerHTML = ''; // Clear current content
-
-                // Retrieve data from Firebase
-                database.ref('texts').once('value', function(snapshot) {
-                    snapshot.forEach(function(childSnapshot) {
-                        const childData = childSnapshot.val();
-                        const newText = document.createElement("p");
-                        newText.textContent = childData.text;
-                        displayText.appendChild(newText);
-                    });
-                }, function(error) {
-                    console.error("Error loading texts:", error);
-                });
-            }
-
-            // Load the texts when the page is loaded
-            loadText();
-        });
-    </script>
 </body>
 </html>
