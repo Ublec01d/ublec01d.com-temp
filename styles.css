@@ -76,3 +76,20 @@ html, body {
     scrollbar-width: thin;
   }
   
+  .ascii-bat {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: lime;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .github-link {
+    font-size: 1.0em;
+  }
+  
